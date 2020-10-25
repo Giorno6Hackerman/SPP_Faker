@@ -6,79 +6,81 @@ namespace FakerLibrary
 {
     public static class Generator
     {
+        private static Random _rand = new Random();
+
         public static bool GenerateBoolean()
         {
-            return true;
+            return (_rand.Next(2) == 0) ? false : true;
         }
 
         public static byte GenerateByte()
         {
-            return 0;
+            return (byte)_rand.Next(Byte.MaxValue + 1);
         }
 
-        public static byte GenerateChar()
+        public static char GenerateChar()
+        {
+            return (char)_rand.Next(Char.MaxValue + 1);
+        }
+        
+        public static short GenerateSByte()
+        {
+            return (short)_rand.Next(-Byte.MaxValue / 2, Byte.MaxValue / 2);
+        }
+
+        public static short GenerateInt16()
+        {
+            return (short)_rand.Next(Int16.MinValue, Int16.MaxValue);
+        }
+
+        public static UInt16 GenerateUInt16()
+        {
+            return (UInt16)_rand.Next(UInt16.MinValue, UInt16.MaxValue);
+        }
+
+        public static int GenerateInt32()
+        {
+            return (int)_rand.Next(Int32.MinValue, Int32.MaxValue);
+        }
+
+        public static UInt32 GenerateUInt32()
+        {
+            return (UInt32)(_rand.Next(Int32.MaxValue) >> 1 + _rand.Next(Int32.MaxValue));
+        }
+
+        public static Int64 GenerateInt64()
         {
             return 0;
         }
 
-        public static byte GenerateSByte()
+        public static UInt64 GenerateUInt64()
         {
             return 0;
         }
 
-        public static byte GenerateInt16()
+        public static Single GenerateSingle()
         {
             return 0;
         }
 
-        public static byte GenerateUInt16()
+        public static Double GenerateDouble()
         {
             return 0;
         }
 
-        public static byte GenerateInt32()
+        public static Decimal GenerateDecimal()
         {
             return 0;
         }
 
-        public static byte GenerateUInt32()
+        public static DateTime GenerateDateTime()
         {
-            return 0;
+            return DateTime.Now;
         }
 
-        public static byte GenerateInt64()
+        public static string GenerateString()
         {
-            return 0;
-        }
-
-        public static byte GenerateUInt64()
-        {
-            return 0;
-        }
-
-        public static byte GenerateSingle()
-        {
-            return 0;
-        }
-
-        public static byte GenerateDouble()
-        {
-            return 0;
-        }
-
-        public static byte GenerateDecimal()
-        {
-            return 0;
-        }
-
-        public static byte GenerateDateTime()
-        {
-            return 0;
-        }
-
-        public static byte GenerateString()
-        {
-            return 0;
+            return "";
         }
 
         public static byte GenerateList()
