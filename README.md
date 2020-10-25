@@ -1,2 +1,2 @@
-# SPP_Faker
-The second spp lab
+# Hello there
+5 semester, SPP lab №2 "Faker"
