@@ -10,7 +10,7 @@ namespace FakerLibrary
 
         public static bool GenerateBoolean()
         {
-            return (_rand.Next(2) == 0) ? false : true;
+            return _rand.Next(2) == 1;
         }
 
         public static byte GenerateByte()
@@ -45,32 +45,36 @@ namespace FakerLibrary
 
         public static UInt32 GenerateUInt32()
         {
-            return (UInt32)(_rand.Next(Int32.MaxValue) >> 1 + _rand.Next(Int32.MaxValue));
+            return (UInt32)((_rand.Next(1 << 30) << 2) | _rand.Next(1 << 2));
         }
 
         public static Int64 GenerateInt64()
         {
-            return 0;
+            return (long)((_rand.Next(1 << 30) << 34) | (_rand.Next(1 << 30) << 4) | _rand.Next(1 << 4));
         }
 
         public static UInt64 GenerateUInt64()
         {
-            return 0;
+            return (ulong)((_rand.Next(1 << 30) << 34) | (_rand.Next(1 << 30) << 4) | _rand.Next(1 << 4));
         }
 
         public static Single GenerateSingle()
         {
-            return 0;
+            var buffer = new byte[4];
+            _rand.NextBytes(buffer);
+            return BitConverter.ToSingle(buffer, 0);
         }
 
         public static Double GenerateDouble()
         {
-            return 0;
+            var buffer = new byte[8];
+            _rand.NextBytes(buffer);
+            return BitConverter.ToDouble(buffer, 0);
         }
 
         public static Decimal GenerateDecimal()
         {
-            return 0;
+            return new decimal(_rand.Next(), _rand.Next(), _rand.Next(), _rand.Next(2) == 1, (byte)_rand.Next(29));
         }
 
         public static DateTime GenerateDateTime()
