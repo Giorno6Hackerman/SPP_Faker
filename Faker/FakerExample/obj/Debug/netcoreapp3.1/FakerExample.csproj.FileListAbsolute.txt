@@ -1,0 +1,13 @@
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\bin\Debug\netcoreapp3.1\FakerExample.exe
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\bin\Debug\netcoreapp3.1\FakerExample.deps.json
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\bin\Debug\netcoreapp3.1\FakerExample.runtimeconfig.json
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\bin\Debug\netcoreapp3.1\FakerExample.runtimeconfig.dev.json
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\bin\Debug\netcoreapp3.1\FakerExample.dll
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\bin\Debug\netcoreapp3.1\FakerExample.pdb
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.csprojAssemblyReference.cache
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.AssemblyInfoInputs.cache
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.AssemblyInfo.cs
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.csproj.CoreCompileInputs.cache
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.dll
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.pdb
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerExample\obj\Debug\netcoreapp3.1\FakerExample.genruntimeconfig.cache

@@ -22,7 +22,12 @@ namespace FakerLibrary
         private void LoadPlugins()
         {
             Assembly asm = Assembly.Load(path);
-
+            foreach (Type type in asm.GetTypes())
+            {
+                var gen = asm.CreateInstance(type.Name) as IGenerator;
+                //object gen = Activator.CreateInstance(type);
+                _generators.Add(gen.GetTypeOfValue(), gen.GenerateValue);
+            }
         }
 
         // выдавать нужный генератор по типу, в том числе лист
