@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj": {}
+    "c:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj": {}
   },
   "projects": {
-    "C:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj": {
+    "c:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj",
+        "projectUniqueName": "c:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj",
         "projectName": "FakerLibrary",
-        "projectPath": "C:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj",
+        "projectPath": "c:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\FakerLibrary.csproj",
         "packagesPath": "C:\\Users\\Masha\\.nuget\\packages\\",
-        "outputPath": "C:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\obj\\",
+        "outputPath": "c:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\FakerLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Masha\\AppData\\Roaming\\NuGet\\NuGet.Config",

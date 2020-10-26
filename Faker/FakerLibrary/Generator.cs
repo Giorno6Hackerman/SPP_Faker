@@ -79,7 +79,7 @@ namespace FakerLibrary
 
         public static DateTime GenerateDateTime()
         {
-            return DateTime.Now;
+            return new DateTime((_rand.Next(1 << 30) << 34) | (_rand.Next(1 << 30) << 4) | _rand.Next(1 << 4));
         }
 
         public static string GenerateString()
