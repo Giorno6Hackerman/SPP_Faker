@@ -1,0 +1,9 @@
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\obj\Debug\netcoreapp3.1\FakerLibrary.csprojAssemblyReference.cache
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\obj\Debug\netcoreapp3.1\FakerLibrary.AssemblyInfoInputs.cache
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\obj\Debug\netcoreapp3.1\FakerLibrary.AssemblyInfo.cs
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\obj\Debug\netcoreapp3.1\FakerLibrary.csproj.CoreCompileInputs.cache
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\bin\Debug\netcoreapp3.1\FakerLibrary.deps.json
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\bin\Debug\netcoreapp3.1\FakerLibrary.dll
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\bin\Debug\netcoreapp3.1\FakerLibrary.pdb
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\obj\Debug\netcoreapp3.1\FakerLibrary.dll
+c:\5 sem\SPP\Labs\Lab_2\Faker\FakerLibrary\obj\Debug\netcoreapp3.1\FakerLibrary.pdb

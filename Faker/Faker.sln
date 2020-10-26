@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerLibrary", "FakerLibrary\FakerLibrary.csproj", "{3A3B4A53-05EC-44C5-8642-5FC4E0B9CA85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakerLibrary", "FakerLibrary\FakerLibrary.csproj", "{3A3B4A53-05EC-44C5-8642-5FC4E0B9CA85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerExample", "FakerExample\FakerExample.csproj", "{32F9B539-C9B2-4973-AAFE-90CB1388E553}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakerExample", "FakerExample\FakerExample.csproj", "{32F9B539-C9B2-4973-AAFE-90CB1388E553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins", "Plugins\Plugins.csproj", "{0F69A135-24B9-4B2A-A5CF-62CC2CB0EA78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{32F9B539-C9B2-4973-AAFE-90CB1388E553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F9B539-C9B2-4973-AAFE-90CB1388E553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32F9B539-C9B2-4973-AAFE-90CB1388E553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F69A135-24B9-4B2A-A5CF-62CC2CB0EA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F69A135-24B9-4B2A-A5CF-62CC2CB0EA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F69A135-24B9-4B2A-A5CF-62CC2CB0EA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F69A135-24B9-4B2A-A5CF-62CC2CB0EA78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

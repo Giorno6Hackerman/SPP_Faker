@@ -1,91 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Reflection;
 
 namespace FakerLibrary
 {
-    public static class Generator
+    public class Generator
     {
-        private static Random _rand = new Random();
+        private string path = "Plugins\\bin\\Debug\\netcoreapp3.1\\Plugins.dll";
+        public delegate object Generate(Random random);
+        private static Dictionary<Type, Generate> _generators;
+        private static Random _random;
 
-        public static bool GenerateBoolean()
+        public Generator()
         {
-            return (_rand.Next(2) == 0) ? false : true;
+            _generators = new Dictionary<Type, Generate>();
+            _random = new Random();
+            LoadPlugins();
         }
 
-        public static byte GenerateByte()
+        // подгрузить остальные плагины
+        private void LoadPlugins()
         {
-            return (byte)_rand.Next(Byte.MaxValue + 1);
+            Assembly asm = Assembly.Load(path);
+
         }
 
-        public static char GenerateChar()
+        // выдавать нужный генератор по типу, в том числе лист
+        // обрабатка дто и типов без генератора
+        public static object GetGeneratedValue(Type type)
         {
-            return (char)_rand.Next(Char.MaxValue + 1);
-        }
-        
-        public static short GenerateSByte()
-        {
-            return (short)_rand.Next(-Byte.MaxValue / 2, Byte.MaxValue / 2);
-        }
+            Generate gen;
+            if (_generators.TryGetValue(type, out gen))
+            {
+                return gen(_random);
+            }
 
-        public static short GenerateInt16()
-        {
-            return (short)_rand.Next(Int16.MinValue, Int16.MaxValue);
-        }
+            if (type.IsGenericType && type.GetInterface("IList") != null)
+            {
+                return ListGenerator.GenerateList(_random, type.GenericTypeArguments[0]);
+            }
 
-        public static UInt16 GenerateUInt16()
-        {
-            return (UInt16)_rand.Next(UInt16.MinValue, UInt16.MaxValue);
-        }
-
-        public static int GenerateInt32()
-        {
-            return (int)_rand.Next(Int32.MinValue, Int32.MaxValue);
-        }
-
-        public static UInt32 GenerateUInt32()
-        {
-            return (UInt32)(_rand.Next(Int32.MaxValue) >> 1 + _rand.Next(Int32.MaxValue));
-        }
-
-        public static Int64 GenerateInt64()
-        {
-            return 0;
-        }
-
-        public static UInt64 GenerateUInt64()
-        {
-            return 0;
-        }
-
-        public static Single GenerateSingle()
-        {
-            return 0;
-        }
-
-        public static Double GenerateDouble()
-        {
-            return 0;
-        }
-
-        public static Decimal GenerateDecimal()
-        {
-            return 0;
-        }
-
-        public static DateTime GenerateDateTime()
-        {
-            return DateTime.Now;
-        }
-
-        public static string GenerateString()
-        {
-            return "";
-        }
-
-        public static byte GenerateList()
-        {
-            return 0;
+            if (type.IsClass && !type.IsGenericType && !type.IsAbstract && !type.IsArray)
+            {
+                return Faker.Create(type);
+            }
+            return null;
         }
     }
 }
