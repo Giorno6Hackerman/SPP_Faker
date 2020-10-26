@@ -6,7 +6,7 @@ namespace FakerLibrary
 {
     public class Faker
     {
-        private Generator _generator;
+        private static Generator _generator;
         private List<Type> _types;
 
         public Faker()
@@ -27,8 +27,6 @@ namespace FakerLibrary
         public static object Create(Type type)
         {
             ConstructorInfo[] constructors = type.GetConstructors();
-            List<FieldInfo> fields = new List<FieldInfo>(type.GetFields());
-            List<PropertyInfo> properties = new List<PropertyInfo>(type.GetProperties());
 
             if (constructors.Length == 0)
             {
@@ -36,9 +34,14 @@ namespace FakerLibrary
             }
 
             ConstructorInfo constr = (constructors.Length > 1) ? ChooseConstructor(constructors) : constructors[0];
-
-            
-            return null;
+            if (constr.GetParameters().Length > 0)
+            {
+                return CreateWithConstructorWithParameters(constr, type);
+            }
+            else
+            {
+                return CreateWithConstructorWithoutParameters(constr, type);
+            }
         }
 
         private static ConstructorInfo ChooseConstructor(ConstructorInfo[] constructors)
@@ -58,7 +61,37 @@ namespace FakerLibrary
 
         private static object CreateWithoutPublicConstructor(Type type)
         {
-            return null;
+            
+            object result = Activator.CreateInstance(type);
+            return FillFieldsAndProperties(result, type);
+        }
+
+        private static object FillFieldsAndProperties(object obj, Type type)
+        {
+            FieldInfo[] fields = type.GetFields();
+            PropertyInfo[] properties = type.GetProperties();
+
+            foreach (var field in fields)
+            {
+                field.SetValue(obj, Generator.GetGeneratedValue(field.FieldType));
+            }
+
+            foreach (var property in properties)
+            {
+                property.SetValue(obj, Generator.GetGeneratedValue(property.PropertyType));
+            }
+            return obj;
+        }
+
+        private static object CreateWithConstructorWithParameters(ConstructorInfo constructor, Type type)
+        {
+
+            return FillFieldsAndProperties(null, type);
+        }
+
+        private static object CreateWithConstructorWithoutParameters(ConstructorInfo constructor, Type type)
+        {
+            return FillFieldsAndProperties(null, type);
         }
     }
 }
