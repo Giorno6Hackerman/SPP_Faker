@@ -84,12 +84,21 @@ namespace FakerLibrary
 
         public static string GenerateString()
         {
-            return "";
+            int size = _rand.Next(1024) + 1;
+            byte[] buffer = new byte[size * 2];
+            _rand.NextBytes(buffer);
+            return Encoding.UTF8.GetString(buffer);
         }
 
-        public static byte GenerateList()
+        public static List<T> GenerateList<T>()
         {
-            return 0;
+            int size = _rand.Next(Byte.MaxValue);
+            List<T> list = new List<T>(size);
+            for (int i = 0; i < size; i++)
+            {
+                
+            }
+            return list;
         }
     }
 }
