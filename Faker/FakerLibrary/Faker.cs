@@ -24,8 +24,9 @@ namespace FakerLibrary
         // один конструктор без параметров
         // один конструктор с параметрами
         // нескольок конструкторов
-        public static object Create(Type type)
+        public object Create(Type type)
         {
+            
             ConstructorInfo[] constructors = type.GetConstructors();
 
             if (constructors.Length == 0)
@@ -73,12 +74,12 @@ namespace FakerLibrary
 
             foreach (var field in fields)
             {
-                field.SetValue(obj, Generator.GetGeneratedValue(field.FieldType));
+                field.SetValue(obj, _generator.GetGeneratedValue(field.FieldType));
             }
 
             foreach (var property in properties)
             {
-                property.SetValue(obj, Generator.GetGeneratedValue(property.PropertyType));
+                property.SetValue(obj, _generator.GetGeneratedValue(property.PropertyType));
             }
             return obj;
         }
@@ -90,7 +91,7 @@ namespace FakerLibrary
 
             for (int i = 0; i < values.Length; i++)
             {
-                values[i] = Generator.GetGeneratedValue(parameters[i].ParameterType);
+                values[i] = _generator.GetGeneratedValue(parameters[i].ParameterType);
             }
 
             object result = constructor.Invoke(values);

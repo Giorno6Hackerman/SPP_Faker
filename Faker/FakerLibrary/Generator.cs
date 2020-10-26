@@ -8,8 +8,8 @@ namespace FakerLibrary
     {
         private string path = "Plugins\\bin\\Debug\\netcoreapp3.1\\Plugins.dll";
         public delegate object Generate(Random random);
-        private static Dictionary<Type, Generate> _generators;
-        private static Random _random;
+        private Dictionary<Type, Generate> _generators;
+        private Random _random;
 
         public Generator()
         {
@@ -32,7 +32,7 @@ namespace FakerLibrary
 
         // выдавать нужный генератор по типу, в том числе лист
         // обрабатка дто и типов без генератора
-        public static object GetGeneratedValue(Type type)
+        public object GetGeneratedValue(Type type)
         {
             Generate gen;
             if (_generators.TryGetValue(type, out gen))
@@ -42,7 +42,8 @@ namespace FakerLibrary
 
             if (type.IsGenericType && type.GetInterface("IList") != null)
             {
-                return ListGenerator.GenerateList(_random, type.GenericTypeArguments[0]);
+                ListGenerator listGen = new ListGenerator();
+                return listGen.GenerateList(this, _random, type.GenericTypeArguments[0]);
             }
 
             if (type.IsClass && !type.IsGenericType && !type.IsAbstract && !type.IsArray)
