@@ -48,7 +48,7 @@ namespace FakerLibrary
 
             if (type.IsClass && !type.IsGenericType && !type.IsAbstract && !type.IsArray)
             {
-                return Faker.Create(type);
+                return FakerSingleton.GetInstance().Create(type);
             }
             return null;
         }

@@ -6,7 +6,7 @@ namespace FakerLibrary
 {
     public class Faker
     {
-        private static Generator _generator;
+        private Generator _generator;
         private List<Type> _types;
 
         public Faker()
@@ -26,23 +26,34 @@ namespace FakerLibrary
         // нескольок конструкторов
         public object Create(Type type)
         {
-            
+            if (_types.Contains(type))
+            {
+                return null;
+            }
+
+            _types.Add(type);
+            object result;
             ConstructorInfo[] constructors = type.GetConstructors();
 
             if (constructors.Length == 0)
             {
-                return CreateWithoutPublicConstructor(type);
-            }
-
-            ConstructorInfo constr = (constructors.Length > 1) ? ChooseConstructor(constructors) : constructors[0];
-            if (constr.GetParameters().Length > 0)
-            {
-                return CreateWithConstructorWithParameters(constr, type);
+                result = CreateWithoutPublicConstructor(type);
             }
             else
             {
-                return CreateWithConstructorWithoutParameters(constr, type);
+                ConstructorInfo constr = (constructors.Length > 1) ? ChooseConstructor(constructors) : constructors[0];
+                if (constr.GetParameters().Length > 0)
+                {
+                    result = CreateWithConstructorWithParameters(constr, type);
+                }
+                else
+                {
+                    result = CreateWithConstructorWithoutParameters(constr, type);
+                }
             }
+
+            _types.Remove(type);
+            return result;
         }
 
         private static ConstructorInfo ChooseConstructor(ConstructorInfo[] constructors)
@@ -60,14 +71,14 @@ namespace FakerLibrary
             return result;
         }
 
-        private static object CreateWithoutPublicConstructor(Type type)
+        private object CreateWithoutPublicConstructor(Type type)
         {
             
             object result = Activator.CreateInstance(type);
             return FillFieldsAndProperties(result, type);
         }
 
-        private static object FillFieldsAndProperties(object obj, Type type)
+        private object FillFieldsAndProperties(object obj, Type type)
         {
             FieldInfo[] fields = type.GetFields();
             PropertyInfo[] properties = type.GetProperties();
@@ -84,7 +95,7 @@ namespace FakerLibrary
             return obj;
         }
 
-        private static object CreateWithConstructorWithParameters(ConstructorInfo constructor, Type type)
+        private object CreateWithConstructorWithParameters(ConstructorInfo constructor, Type type)
         {
             object[] values = new object[constructor.GetParameters().Length];
             ParameterInfo[] parameters = constructor.GetParameters();
@@ -98,7 +109,7 @@ namespace FakerLibrary
             return FillFieldsAndProperties(result, type);
         }
 
-        private static object CreateWithConstructorWithoutParameters(ConstructorInfo constructor, Type type)
+        private object CreateWithConstructorWithoutParameters(ConstructorInfo constructor, Type type)
         {
             object result = constructor.Invoke(null);
             return FillFieldsAndProperties(result, type);
