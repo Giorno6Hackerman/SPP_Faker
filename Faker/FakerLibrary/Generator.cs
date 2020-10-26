@@ -82,6 +82,7 @@ namespace FakerLibrary
             return new DateTime((_rand.Next(1 << 30) << 34) | (_rand.Next(1 << 30) << 4) | _rand.Next(1 << 4));
         }
 
+        // без пустой строки ?
         public static string GenerateString()
         {
             int size = _rand.Next(1024) + 1;
@@ -90,13 +91,14 @@ namespace FakerLibrary
             return Encoding.UTF8.GetString(buffer);
         }
 
+        // определять тип элементов и вызывать сответствующий генератор
         public static List<T> GenerateList<T>()
         {
             int size = _rand.Next(Byte.MaxValue);
             List<T> list = new List<T>(size);
             for (int i = 0; i < size; i++)
             {
-                
+                list.Add(Faker.GetGenerator<T>().Invoke());
             }
             return list;
         }
