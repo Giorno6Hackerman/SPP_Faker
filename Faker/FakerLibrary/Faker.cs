@@ -85,13 +85,22 @@ namespace FakerLibrary
 
         private static object CreateWithConstructorWithParameters(ConstructorInfo constructor, Type type)
         {
+            object[] values = new object[constructor.GetParameters().Length];
+            ParameterInfo[] parameters = constructor.GetParameters();
 
-            return FillFieldsAndProperties(null, type);
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = Generator.GetGeneratedValue(parameters[i].ParameterType);
+            }
+
+            object result = constructor.Invoke(values);
+            return FillFieldsAndProperties(result, type);
         }
 
         private static object CreateWithConstructorWithoutParameters(ConstructorInfo constructor, Type type)
         {
-            return FillFieldsAndProperties(null, type);
+            object result = constructor.Invoke(null);
+            return FillFieldsAndProperties(result, type);
         }
     }
 }
