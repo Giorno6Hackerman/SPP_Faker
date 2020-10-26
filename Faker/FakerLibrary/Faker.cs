@@ -21,8 +21,8 @@ namespace FakerLibrary
             switch (typeName)
             {
                 case "Boolean":
-                    Generate<bool> gen = Generator.GenerateBoolean;
-                    return gen;
+                    Generate<bool> gen = ListGenerator.GenerateBoolean;
+                    break;
                 case "Byte":
                 case "SByte":
                 case "Char":
