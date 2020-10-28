@@ -25,6 +25,7 @@ namespace FakerExample
         private Single _singleProp;
         public Int64 Int64Prop { get; set; }
         public List<int> ListProp { get; set; }
+        public OneConstructor OneProp;
 
         public string GetInfo()
         {
@@ -33,7 +34,8 @@ namespace FakerExample
             {
                 result += str + "\n";
             }
-            return $"_int16Prop: {_int16Prop}, _singleProp: {_singleProp}, Int64Prop: {Int64Prop}, ListProp: {result}";
+            return $"**_int16Prop: {_int16Prop}, _singleProp: {_singleProp}, Int64Prop: {Int64Prop}, \nListProp: {result}, " 
+                    + OneProp.GetInfo() + "**";
         }
     }
 }
