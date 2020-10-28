@@ -6,7 +6,7 @@ namespace FakerLibrary
 {
     public class Generator
     {
-        private string path = "Plugins\\bin\\Debug\\netcoreapp3.1\\Plugins.dll";
+        private string path = "C:\\5 sem\\SPP\\Labs\\Lab_2\\Faker\\Plugins\\bin\\Debug\\netcoreapp3.1\\Plugins.dll";
         public delegate object Generate(Random random);
         private Dictionary<Type, Generate> _generators;
         private Random _random;
@@ -21,10 +21,11 @@ namespace FakerLibrary
         // подгрузить остальные плагины
         private void LoadPlugins()
         {
-            Assembly asm = Assembly.Load(path);
+            Assembly asm = Assembly.LoadFrom(path);
             foreach (Type type in asm.GetTypes())
             {
-                var gen = asm.CreateInstance(type.Name) as IGenerator;
+                var tmp = asm.CreateInstance(type.FullName);
+                var gen = asm.CreateInstance(type.FullName) as IGenerator;
                 //object gen = Activator.CreateInstance(type);
                 _generators.Add(gen.GetTypeOfValue(), gen.GenerateValue);
             }

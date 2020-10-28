@@ -7,7 +7,7 @@ namespace Plugins
     {
         public object GenerateValue(Random random)
         {
-            return new DateTime((random.Next(1 << 30) << 34) | (random.Next(1 << 30) << 4) | random.Next(1 << 4));
+            return new DateTime((random.Next() << 32) | random.Next());
         }
 
         public Type GetTypeOfValue()
