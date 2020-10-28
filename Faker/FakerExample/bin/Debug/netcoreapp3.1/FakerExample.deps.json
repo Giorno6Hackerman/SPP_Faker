@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "FakerExample/1.0.0": {
+        "dependencies": {
+          "FakerLibrary": "1.0.0"
+        },
         "runtime": {
           "FakerExample.dll": {}
+        }
+      },
+      "FakerLibrary/1.0.0": {
+        "runtime": {
+          "FakerLibrary.dll": {}
         }
       }
     }
   },
   "libraries": {
     "FakerExample/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FakerLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
